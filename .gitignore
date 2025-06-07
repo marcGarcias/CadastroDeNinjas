@@ -34,3 +34,4 @@ build/
 
 ### External ###
 .env
+data/
