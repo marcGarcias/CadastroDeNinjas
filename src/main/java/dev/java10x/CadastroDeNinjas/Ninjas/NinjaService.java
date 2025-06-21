@@ -17,9 +17,8 @@ public class NinjaService {
         return ninjaRepository.save(ninja);
     }
 
-    //Listar todos os Ninjas
+    //Listar Todos os Ninjas
     public List<NinjaModel> listarNinjas(){
-
         return ninjaRepository.findAll();
     }
 
@@ -27,5 +26,10 @@ public class NinjaService {
     public NinjaModel listarNinjaPorId(Long id){
         Optional<NinjaModel> ninjaModel = ninjaRepository.findById(id);
         return ninjaModel.orElse(null);
+    }
+    
+    //Deletar Ninja por ID
+    public void deletarNinjaPorId(Long id){
+        ninjaRepository.deleteById(id);
     }
 }
