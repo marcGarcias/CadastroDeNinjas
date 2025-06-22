@@ -10,7 +10,9 @@ public class NinjaService {
 
     private NinjaRepository ninjaRepository;
 
-    public NinjaService(NinjaRepository ninjaRepository) {this.ninjaRepository = ninjaRepository;}
+    public NinjaService(NinjaRepository ninjaRepository) {
+        this.ninjaRepository = ninjaRepository;
+    }
 
     //Criar Ninja
     public NinjaModel criarNinja(NinjaModel ninja){
