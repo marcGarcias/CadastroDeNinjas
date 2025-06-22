@@ -26,6 +26,12 @@ public class MissionController {
         return missionService.listarMissoes();
     }
 
+    // Get -- Mostrar
+    @GetMapping("/listar/{id}")
+    public MissionModel listarMissaoPorId(@PathVariable Long id){
+        return missionService.listarMissaoPorID(id);
+    }
+
     // Put -- Atualizar
     @PutMapping("/alterar")
     public String alterarMissao(){
@@ -33,8 +39,8 @@ public class MissionController {
     }
 
     // Delete -- Deletar
-    @DeleteMapping("/delete")
-    public String DeletarMissao(){
-        return "Missão deletada com sucesso";
+    @DeleteMapping("/deletar/{id}")
+    public void DeletarMissao(@PathVariable Long id){
+        missionService.deletarMissaoPorId(id);
     }
 }
