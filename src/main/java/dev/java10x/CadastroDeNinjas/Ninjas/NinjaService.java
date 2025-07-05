@@ -9,29 +9,36 @@ import java.util.Optional;
 public class NinjaService {
 
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     //Criar Ninja
-    public NinjaModel criarNinja(NinjaModel ninja){
-        return ninjaRepository.save(ninja);
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO) {
+        NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+        ninja = ninjaRepository.save(ninja);
+        return ninjaMapper.map(ninja);
     }
 
     //Listar Todos os Ninjas
-    public List<NinjaModel> listarNinjas(){
+    public List<NinjaModel> listarNinjas() {
         return ninjaRepository.findAll();
     }
 
     //Listar Ninja por ID
-    public NinjaModel listarNinjaPorId(Long id){
+    public NinjaModel listarNinjaPorId(Long id) {
         Optional<NinjaModel> ninjaModel = ninjaRepository.findById(id);
         return ninjaModel.orElse(null);
     }
-    
-    //Deletar Ninja por ID
-    public void deletarNinjaPorId(Long id){
+
+    //Deletar ninja
+    public void deletarNinja(Long id) {
         ninjaRepository.deleteById(id);
     }
+
+    //Atualizar ninja
+
 }
